@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(MyApp());
-}
+//应用入口
+void main() => runApp(MyApp());
 
+/// 应用结构
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      //应用名称
       title: 'Flutter Demo',
       theme: ThemeData(
         // This is the theme of your application.
@@ -20,13 +21,17 @@ class MyApp extends StatelessWidget {
         // or simply save your changes to "hot reload" in a Flutter IDE).
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
+
+        //蓝色主题
         primarySwatch: Colors.blue,
       ),
+      //应用首页路由
       home: MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
 
+/// 首页
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
 
@@ -46,8 +51,10 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  //用于记录按钮点击的总次数
   int _counter = 0;
 
+  /// 设置状态的自增函数
   void _incrementCounter() {
     setState(() {
       // This call to setState tells the Flutter framework that something has
@@ -67,6 +74,8 @@ class _MyHomePageState extends State<MyHomePage> {
     // The Flutter framework has been optimized to make rerunning build methods
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
+
+    //页面脚手架
     return Scaffold(
       appBar: AppBar(
         // Here we take the value from the MyHomePage object that was created by
@@ -103,6 +112,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
+      //悬浮按钮
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment',
