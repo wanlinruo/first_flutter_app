@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'EchoRoute.dart';
 import 'NewRoute.dart';
 import 'RouterTestRoute.dart';
 
@@ -11,14 +12,17 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      //应用名称
-      title: 'Flutter Demo',
+      initialRoute: "/", //名为"/"的路由作为应用的home(首页)
+      title: 'Flutter Demo', //应用名称
       theme: ThemeData(
-        //蓝色主题
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.blue, //蓝色主题
       ),
-      //应用首页路由
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      routes: {
+        "/": (context) => MyHomePage(title: 'Flutter Demo Home Page'), //注册首页路由
+        "new_route": (context) => NewRoute(), //路由表注册
+        "router_test_route": (context) => RouterTestRoute(), //路由表注册
+        "echo_route": (context) => EchoRoute() //路由表注册
+      },
     );
   }
 }
@@ -64,20 +68,29 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             TextButton(
                 onPressed: () {
-                  //导航到新路由
-                  Navigator.push(context, MaterialPageRoute(builder: (context) {
-                    return NewRoute();
-                  }));
+                  //通过路由名打开
+                  Navigator.pushNamed(context, "new_route");
+                  // //导航到新路由
+                  // Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  //   return NewRoute();
+                  // }));
                 },
-                child: Text("open new route")),
+                child: Text("open new_route")),
             TextButton(
                 onPressed: () {
-                  //导航到新路由
-                  Navigator.push(context, MaterialPageRoute(builder: (context) {
-                    return RouterTestRoute();
-                  }));
+                  // //导航到新路由
+                  // Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  //   return RouterTestRoute();
+                  // }));
+                  Navigator.pushNamed(context, "router_test_route");
                 },
-                child: Text("open new route2"))
+                child: Text("open router_test_route")),
+            TextButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, "echo_route",
+                      arguments: "hello");
+                },
+                child: Text("open echo_route"))
           ],
         ),
       ),
