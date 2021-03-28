@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'AssetsWidget.dart';
 import 'EchoRoute.dart';
 import 'NewRoute.dart';
 import 'RandomWordsWidget.dart';
@@ -23,7 +24,8 @@ class MyApp extends StatelessWidget {
         "new_route": (context) => NewRoute(), //路由表注册
         "router_test_route": (context) => RouterTestRoute(), //路由表注册
         "echo_route": (context) => EchoRoute(), //路由表注册
-        "random_words": (context) => RandomWordsWidget() //路由表注册
+        "random_words_route": (context) => RandomWordsWidget(), //路由表注册
+        "assets_route": (context) => AssetsWidget() //路由表注册
       },
     );
   }
@@ -68,38 +70,11 @@ class _MyHomePageState extends State<MyHomePage> {
               '$_counter',
               style: Theme.of(context).textTheme.headline4,
             ),
-            TextButton(
-                onPressed: () {
-                  //通过路由名打开
-                  Navigator.pushNamed(context, "new_route");
-                  // //导航到新路由
-                  // Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  //   return NewRoute();
-                  // }));
-                },
-                child: Text("open new_route")),
-            TextButton(
-                onPressed: () {
-                  // //导航到新路由
-                  // Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  //   return RouterTestRoute();
-                  // }));
-                  Navigator.pushNamed(context, "router_test_route");
-                },
-                child: Text("open router_test_route")),
-            TextButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, "echo_route",
-                      arguments: "hello");
-                },
-                child: Text("open echo_route")),
-            MaterialButton(
-              onPressed: () {
-                Navigator.pushNamed(context, "random_words");
-              },
-              child: Text("open random_words"),
-              color: Colors.amber,
-            )
+            getNewTextButtonWidget(context, "new_route"),
+            getNewTextButtonWidget(context, "router_test_route"),
+            getNewTextButtonWidget(context, "echo_route", args: "hello"),
+            getNewButtonWidget(context, "random_words_route"),
+            getNewButtonWidget(context, "assets_route"),
           ],
         ),
       ),
@@ -111,4 +86,22 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
     );
   }
+}
+
+Widget getNewTextButtonWidget(BuildContext context, String route, {String args}) {
+  return TextButton(
+      onPressed: () {
+        Navigator.pushNamed(context, route, arguments: args);
+      },
+      child: Text("open echo_route"));
+}
+
+Widget getNewButtonWidget(BuildContext context, String route) {
+  return MaterialButton(
+    onPressed: () {
+      Navigator.pushNamed(context, route);
+    },
+    child: Text("open $route"),
+    color: Colors.amber,
+  );
 }
