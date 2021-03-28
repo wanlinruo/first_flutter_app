@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'EchoRoute.dart';
 import 'NewRoute.dart';
+import 'RandomWordsWidget.dart';
 import 'RouterTestRoute.dart';
 
 //应用入口
@@ -21,7 +22,8 @@ class MyApp extends StatelessWidget {
         "/": (context) => MyHomePage(title: 'Flutter Demo Home Page'), //注册首页路由
         "new_route": (context) => NewRoute(), //路由表注册
         "router_test_route": (context) => RouterTestRoute(), //路由表注册
-        "echo_route": (context) => EchoRoute() //路由表注册
+        "echo_route": (context) => EchoRoute(), //路由表注册
+        "random_words": (context) => RandomWordsWidget() //路由表注册
       },
     );
   }
@@ -90,7 +92,14 @@ class _MyHomePageState extends State<MyHomePage> {
                   Navigator.pushNamed(context, "echo_route",
                       arguments: "hello");
                 },
-                child: Text("open echo_route"))
+                child: Text("open echo_route")),
+            MaterialButton(
+              onPressed: () {
+                Navigator.pushNamed(context, "random_words");
+              },
+              child: Text("open random_words"),
+              color: Colors.amber,
+            )
           ],
         ),
       ),
