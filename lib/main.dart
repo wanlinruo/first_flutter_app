@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'AssetsWidget.dart';
+import 'DebugDumpWidget.dart';
 import 'EchoRoute.dart';
 import 'NewRoute.dart';
 import 'RandomWordsWidget.dart';
@@ -25,7 +26,8 @@ class MyApp extends StatelessWidget {
         "router_test_route": (context) => RouterTestRoute(), //路由表注册
         "echo_route": (context) => EchoRoute(), //路由表注册
         "random_words_route": (context) => RandomWordsWidget(), //路由表注册
-        "assets_route": (context) => AssetsWidget() //路由表注册
+        "assets_route": (context) => AssetsWidget(), //路由表注册
+        "debug_dump_route": (context) => DebugDumpWidget() //路由表注册
       },
     );
   }
@@ -75,6 +77,7 @@ class _MyHomePageState extends State<MyHomePage> {
             getNewTextButtonWidget(context, "echo_route", args: "hello"),
             getNewButtonWidget(context, "random_words_route"),
             getNewButtonWidget(context, "assets_route"),
+            getNewButtonWidget(context, "debug_dump_route"),
           ],
         ),
       ),
@@ -88,7 +91,8 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 }
 
-Widget getNewTextButtonWidget(BuildContext context, String route, {String args}) {
+Widget getNewTextButtonWidget(BuildContext context, String route,
+    {String args}) {
   return TextButton(
       onPressed: () {
         Navigator.pushNamed(context, route, arguments: args);
