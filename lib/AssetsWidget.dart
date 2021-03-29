@@ -23,8 +23,20 @@ class AssetsWidget extends StatelessWidget {
         title: Text("AssetsWidget"),
       ),
       body: Center(
-        child: Text("读取文件"),
+        child: Column(
+          children: [Text("读取Json文件"), getAssetImage()],
+        ),
       ),
     );
   }
+}
+
+Widget getAssetImage() {
+  return Image(
+    image: AssetImage("assets/images/logo.png"),
+  );
+}
+
+Widget getImageAsset() {
+  return Image.asset("assets/images/logo.png");
 }
