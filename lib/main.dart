@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 import 'AssetsWidget.dart';
@@ -8,7 +10,17 @@ import 'RandomWordsWidget.dart';
 import 'RouterTestRoute.dart';
 
 //应用入口
-void main() => runApp(MyApp());
+void main() {
+  FlutterError.onError = (FlutterErrorDetails details) {
+    // 转发异常到 Zone 中
+    Zone.current.handleUncaughtError(details.exception, details.stack);
+  };
+  //代码执行沙箱
+  runZonedGuarded(() async => runApp(MyApp()), (error, stackTrace) async {
+    //打印错误,也可以考虑把错误文件存储到文件，上传到服务器或者上传到错误分析平台
+    print(error.toString());
+  });
+}
 
 /// 应用结构
 class MyApp extends StatelessWidget {
