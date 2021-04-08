@@ -2,12 +2,15 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
-import 'AssetsWidget.dart';
-import 'DebugDumpWidget.dart';
-import 'EchoRoute.dart';
-import 'NewRoute.dart';
-import 'RandomWordsWidget.dart';
-import 'RouterTestRoute.dart';
+import 'example/AssetsWidget.dart';
+import 'example/ContextRoute.dart';
+import 'example/CounterWidget.dart';
+import 'example/DebugDumpWidget.dart';
+import 'example/EchoTips.dart';
+import 'example/EchoRoute.dart';
+import 'example/NewRoute.dart';
+import 'example/RandomWordsWidget.dart';
+import 'example/RouterTestRoute.dart';
 
 //应用入口
 void main() {
@@ -39,7 +42,12 @@ class MyApp extends StatelessWidget {
         "echo_route": (context) => EchoRoute(), //路由表注册
         "random_words_route": (context) => RandomWordsWidget(), //路由表注册
         "assets_route": (context) => AssetsWidget(), //路由表注册
-        "debug_dump_route": (context) => DebugDumpWidget() //路由表注册
+        "debug_dump_route": (context) => DebugDumpWidget(), //路由表注册
+        "echo_tips_route": (context) => EchoTips(
+              text: 'hello world',
+            ), //路由表注册
+        "context_route": (context) => ContextRoute(),
+        "counter_route": (context) => CounterWidget(),
       },
     );
   }
@@ -90,6 +98,9 @@ class _MyHomePageState extends State<MyHomePage> {
             getNewButtonWidget(context, "random_words_route"),
             getNewButtonWidget(context, "assets_route"),
             getNewButtonWidget(context, "debug_dump_route"),
+            getNewButtonWidget(context, "echo_tips_route"),
+            getNewButtonWidget(context, "context_route"),
+            getNewButtonWidget(context, "counter_route"),
           ],
         ),
       ),

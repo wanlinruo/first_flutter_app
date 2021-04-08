@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'Utils.dart';
+import '../util/Utils.dart';
 
 class AssetsWidget extends StatelessWidget {
   AssetsWidget({Key key}) : super(key: key);

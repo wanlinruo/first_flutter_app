@@ -1,5 +1,6 @@
-import 'package:first_flutter_app/TipRoute.dart';
 import 'package:flutter/material.dart';
+
+import 'TipRoute.dart';
 
 ///  author : wanlinruo
 ///  date : 2021/3/22 19:39
