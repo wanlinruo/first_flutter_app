@@ -8,6 +8,8 @@ import 'example/CounterWidget.dart';
 import 'example/DebugDumpWidget.dart';
 import 'example/EchoTips.dart';
 import 'example/EchoRoute.dart';
+import 'example/GetStateWidget.dart';
+import 'example/GlobalKeyWidget.dart';
 import 'example/NewRoute.dart';
 import 'example/RandomWordsWidget.dart';
 import 'example/RouterTestRoute.dart';
@@ -48,6 +50,8 @@ class MyApp extends StatelessWidget {
             ), //路由表注册
         "context_route": (context) => ContextRoute(),
         "counter_route": (context) => CounterWidget(),
+        "get_state_route": (context) => GetStateWidget(),
+        "global_key_route": (context) => GlobalKeyWidget(),
       },
     );
   }
@@ -101,6 +105,8 @@ class _MyHomePageState extends State<MyHomePage> {
             getNewButtonWidget(context, "echo_tips_route"),
             getNewButtonWidget(context, "context_route"),
             getNewButtonWidget(context, "counter_route"),
+            getNewButtonWidget(context, "get_state_route"),
+            getNewButtonWidget(context, "global_key_route"),
           ],
         ),
       ),
